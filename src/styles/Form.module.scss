@@ -1,0 +1,30 @@
+.section {
+  max-width: 400px;
+  margin: 0 auto;
+
+  .sectionTop {
+    margin-bottom: 1rem;
+
+    .logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .form {
+      padding: 0 2rem;
+
+      .formItem {
+        margin-bottom: 0.5rem;
+      }
+
+      button {
+        margin-top: 0.5rem;
+        width: 100%;
+      }
+    }
+  }
+
+  .sectionBottom {
+    text-align: center;
+  }
+}

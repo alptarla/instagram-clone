@@ -1,11 +1,12 @@
 import { Menu } from 'antd'
+import Logo from '../../shared/Logo'
 import classes from './Navigation.module.scss'
 
 const Navigation = () => {
   return (
     <nav className={classes.nav}>
       <div className={classes.logo}>
-        <img src="/logo.svg" alt="instagram" />
+        <Logo />
       </div>
       <Menu mode="horizontal" className={classes.navMenu}>
         <Menu.Item key="profile">Profile</Menu.Item>
