@@ -1,5 +1,6 @@
 import { Dropdown, Menu } from 'antd'
 import Avatar from 'antd/lib/avatar/avatar'
+import cn from 'classnames'
 import { Home, User } from 'react-feather'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -25,7 +26,7 @@ const Navigation = () => {
   )
 
   return (
-    <nav className={classes.nav}>
+    <nav className={cn('container', classes.nav)}>
       <Link to="/">
         <Logo />
       </Link>

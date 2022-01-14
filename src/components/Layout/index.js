@@ -7,8 +7,10 @@ const AppLayout = ({ children }) => (
     <Header>
       <Navigation />
     </Header>
-    <Content>{children}</Content>
-    <Footer>Footer</Footer>
+    <Content className="container">{children}</Content>
+    <Footer>
+      <div className="container">Footer</div>
+    </Footer>
   </Layout>
 )
 
