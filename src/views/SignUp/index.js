@@ -1,13 +1,29 @@
 import { Button, Card, Form, Input } from 'antd'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import Logo from '../../components/shared/Logo'
 import rules from '../../lib/formRules'
+import { signUp } from '../../store/slices/auth'
 import classes from '../../styles/Form.module.scss'
 
 const SignUp = () => {
-  const handleSignUp = (values) => {
-    // todo: register user, then redirect to timeline
-    console.log('values :>> ', values)
+  const [loading, setLoading] = useState(false)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleSignUp = async ({ email, password, username }) => {
+    try {
+      setLoading(true)
+      await dispatch(signUp({ email, password, username })).unwrap()
+      navigate('/')
+    } catch {
+      toast.error('Authentication denied!')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -21,13 +37,13 @@ const SignUp = () => {
             <Input placeholder="Username" />
           </Form.Item>
           <Form.Item className={classes.formItem} name="email" rules={rules.email}>
-            <Input placeholder="Phone number, username, or email" />
+            <Input placeholder="Email" />
           </Form.Item>
           <Form.Item className={classes.formItem} name="password" rules={rules.password}>
             <Input.Password placeholder="Password" />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={loading}>
               Submit
             </Button>
           </Form.Item>

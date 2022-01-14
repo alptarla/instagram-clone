@@ -1,13 +1,29 @@
 import { Button, Card, Form, Input } from 'antd'
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import Logo from '../../components/shared/Logo'
 import rules from '../../lib/formRules'
+import { login } from '../../store/slices/auth'
 import classes from '../../styles/Form.module.scss'
 
 const Login = () => {
-  const handleLogin = (values) => {
-    // todo: login user, then redirect to timeline
-    console.log('values :>> ', values)
+  const [loading, setLoading] = useState(false)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleLogin = async ({ email, password }) => {
+    try {
+      setLoading(true)
+      await dispatch(login({ email, password })).unwrap()
+      navigate('/')
+    } catch {
+      toast.error('Authentication denied!')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -24,7 +40,7 @@ const Login = () => {
             <Input.Password placeholder="Password" />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={loading}>
               Submit
             </Button>
           </Form.Item>
