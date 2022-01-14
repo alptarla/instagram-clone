@@ -4,7 +4,9 @@ import classes from './Navigation.module.scss'
 const Navigation = () => {
   return (
     <nav className={classes.nav}>
-      <div className={classes.navBrand}>Instagram</div>
+      <div className={classes.logo}>
+        <img src="/logo.svg" alt="instagram" />
+      </div>
       <Menu mode="horizontal" className={classes.navMenu}>
         <Menu.Item key="profile">Profile</Menu.Item>
       </Menu>
