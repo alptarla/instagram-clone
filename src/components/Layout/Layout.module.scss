@@ -1,0 +1,21 @@
+@import '../../styles/_colors.scss';
+
+.layout {
+  min-height: 100vh;
+  background-color: white;
+
+  header {
+    background-color: white;
+    border-bottom: 1px solid $color-border;
+  }
+
+  main {
+    height: 100%;
+    padding: 50px;
+  }
+
+  footer {
+    background-color: transparent;
+    border-top: 1px solid $color-border;
+  }
+}

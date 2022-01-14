@@ -1,0 +1,15 @@
+@import '../../../styles/colors';
+
+.nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  .navBrand {
+    float: left;
+  }
+
+  .navMenu {
+    margin-left: auto;
+  }
+}
