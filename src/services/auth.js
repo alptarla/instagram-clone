@@ -1,7 +1,6 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
   updateProfile
 } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
@@ -37,7 +36,7 @@ export const authService = {
 
     return makeUserObj(user)
   },
-  logout: () => signOut()
+  logout: () => auth.signOut()
 }
 
 export default authService
