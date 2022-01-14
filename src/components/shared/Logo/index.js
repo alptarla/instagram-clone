@@ -1,5 +1,9 @@
 import classes from './Logo.module.scss'
 
-const Logo = () => <img src="/logo.svg" alt="instagram" className={classes.logo} />
+const Logo = () => (
+  <div className={classes.logo}>
+    <img src="/logo.svg" alt="instagram" />
+  </div>
+)
 
 export default Logo
