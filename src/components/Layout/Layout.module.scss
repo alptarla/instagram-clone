@@ -4,18 +4,18 @@
   min-height: 100vh;
   background-color: transparent;
 
-  header {
+  .header {
     background-color: white;
     border-bottom: 1px solid $color-border;
   }
 
-  main {
+  .main {
     height: 100%;
     width: 100%;
     padding: 2rem 0;
   }
 
-  footer {
+  .footer {
     background-color: white;
     border-top: 1px solid $color-border;
   }

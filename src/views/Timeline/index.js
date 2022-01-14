@@ -1,9 +1,15 @@
-import { useSelector } from 'react-redux'
+import { Col, Row } from 'antd'
+import Suggestions from '../../components/Suggestions'
 
 const Timeline = () => {
-  const { user } = useSelector((state) => state.auth)
-
-  return <div>Timeline for {user?.username}</div>
+  return (
+    <Row>
+      <Col lg={16}>list of posts</Col>
+      <Col lg={8}>
+        <Suggestions />
+      </Col>
+    </Row>
+  )
 }
 
 export default Timeline

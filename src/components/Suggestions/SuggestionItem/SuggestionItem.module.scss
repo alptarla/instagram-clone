@@ -1,0 +1,31 @@
+@import '../../../styles/colors';
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .avatar {
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h4 {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    span {
+      color: $color-light;
+      font-weight: bold;
+    }
+  }
+}
