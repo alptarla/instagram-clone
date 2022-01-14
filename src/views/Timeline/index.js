@@ -1,5 +1,9 @@
+import { useSelector } from 'react-redux'
+
 const Timeline = () => {
-  return <div>Timeline</div>
+  const { user } = useSelector((state) => state.auth)
+
+  return <div>Timeline for {user?.username}</div>
 }
 
 export default Timeline

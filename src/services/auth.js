@@ -10,13 +10,13 @@ import { auth, db } from '../lib/firebase'
 // utils
 const profileDoc = (id) => doc(db, 'profiles', id)
 
-const makeUserObj = (user) => ({
+export const makeUserObj = (user) => ({
   id: user.uid,
   email: user.email,
   username: user.displayName
 })
 
-const authService = {
+export const authService = {
   async signIn(email, password) {
     const { user } = await signInWithEmailAndPassword(auth, email, password)
     return makeUserObj(user)

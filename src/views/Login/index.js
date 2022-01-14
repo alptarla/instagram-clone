@@ -1,7 +1,7 @@
 import { Button, Card, Form, Input } from 'antd'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Logo from '../../components/shared/Logo'
 import rules from '../../lib/formRules'
@@ -11,6 +11,7 @@ import classes from '../../styles/Form.module.scss'
 const Login = () => {
   const [loading, setLoading] = useState(false)
 
+  const { user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -26,6 +27,7 @@ const Login = () => {
     }
   }
 
+  if (user) return <Navigate to="/" />
   return (
     <div className={classes.section}>
       <Card className={classes.sectionTop}>
