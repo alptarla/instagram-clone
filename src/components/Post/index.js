@@ -8,8 +8,6 @@ import PostAction from './PostAction'
 const Post = ({ post }) => {
   const [commentView, setCommentView] = useState(false)
 
-  // TODO: add singleton loader with ant
-
   const image = <img src={post.file} alt={post.description} />
   const cardTop = (
     <div className={classes.cardTop}>
