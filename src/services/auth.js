@@ -15,7 +15,7 @@ export const makeUserObj = (user) => ({
   username: user.displayName
 })
 
-export const authService = {
+const authService = {
   async signIn(email, password) {
     const { user } = await signInWithEmailAndPassword(auth, email, password)
     return makeUserObj(user)

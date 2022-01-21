@@ -1,11 +1,13 @@
 import { auth as firebaseAuth } from '../lib/firebase'
 import { makeUserObj } from '../services/auth'
 import auth, { logout, setUser } from './slices/auth'
-const { configureStore } = require('@reduxjs/toolkit')
+import { configureStore } from '@reduxjs/toolkit'
+import profile from './slices/profile'
 
 const store = configureStore({
   reducer: {
-    auth
+    auth,
+    profile
   }
 })
 
