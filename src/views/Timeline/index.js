@@ -1,22 +1,27 @@
 import { Col, Row } from 'antd'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import Post from '../../components/Post'
+import PostsLoader from '../../components/shared/PostsLoader'
 import Suggestions from '../../components/Suggestions'
 import { getPosts } from '../../store/slices/post'
 
 const Timeline = () => {
-  const { posts, loading } = useSelector((state) => state.post)
-
+  const { posts = [], loading } = useSelector((state) => state.post)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getPosts())
   }, [dispatch])
 
-  if (loading) return <div>loading...</div>
+  const postItems = posts.map((post, index) => <Post key={index} post={post} loading={loading} />)
+
   return (
     <Row>
-      <Col lg={16}>{JSON.stringify(posts)}</Col>
+      <Col lg={16}>
+        {loading ? <PostsLoader count={3} /> : null}
+        {postItems}
+      </Col>
       <Col lg={8}>
         <Suggestions />
       </Col>

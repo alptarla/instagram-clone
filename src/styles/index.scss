@@ -14,3 +14,8 @@ body {
   max-width: 1140px;
   margin: 0 auto;
 }
+
+// reset stuff
+.ant-card-body {
+  padding: 0.5rem 1rem;
+}

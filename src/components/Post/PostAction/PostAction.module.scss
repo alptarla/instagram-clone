@@ -1,0 +1,25 @@
+.cardAction {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .bookmark {
+    margin-left: auto;
+  }
+
+  .heart,
+  .bookmark,
+  .message {
+    cursor: pointer;
+  }
+
+  .heart.active {
+    fill: red;
+    color: red;
+  }
+
+  .bookmark.active {
+    fill: #333;
+    color: #333;
+  }
+}

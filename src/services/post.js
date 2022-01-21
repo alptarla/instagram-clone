@@ -2,16 +2,22 @@ import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { nanoid } from 'nanoid'
 import { db, makeResObject, storage } from '../lib/firebase'
-import post from '../store/slices/post'
 
 const postService = {
   postDoc: (id) => doc(db, 'posts', id),
   async getPost(id) {
-    const res = await getDoc(doc(db, 'posts', id))
-    return makeResObject(res)
+    const res = await getDoc(this.postDoc(id))
+    const post = makeResObject(res)
+
+    // ** populate user property
+    await getDoc(post.user).then((res) => {
+      post.user = makeResObject(res)
+    })
+
+    return post
   },
   async createPost({ userId, description, file }) {
-    const user = await getDoc(this.postDoc(userId))
+    const user = await getDoc(doc(db, 'profiles', userId))
 
     const uploaded = await uploadBytes(ref(storage, file.name), file)
     const fileUrl = await getDownloadURL(uploaded.ref)
@@ -30,7 +36,6 @@ const postService = {
   },
   async getPosts() {
     const res = await getDocs(collection(db, 'posts'))
-
     let posts = res.docs.map((doc) => makeResObject(doc))
 
     // ** populate user property
