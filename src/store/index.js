@@ -3,11 +3,13 @@ import { makeUserObj } from '../services/auth'
 import auth, { logout, setUser } from './slices/auth'
 import { configureStore } from '@reduxjs/toolkit'
 import profile from './slices/profile'
+import post from './slices/post'
 
 const store = configureStore({
   reducer: {
     auth,
-    profile
+    profile,
+    post
   }
 })
 

@@ -34,7 +34,7 @@ const Login = () => {
         <div className={classes.logo}>
           <Logo />
         </div>
-        <Form name="basic" onFinish={handleLogin} className={classes.form}>
+        <Form onFinish={handleLogin} className={classes.form}>
           <Form.Item className={classes.formItem} name="email" rules={rules.email}>
             <Input placeholder="Phone number, username, or email" />
           </Form.Item>

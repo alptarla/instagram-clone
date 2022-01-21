@@ -1,0 +1,30 @@
+@import '../../styles/colors';
+
+.upload {
+  position: relative;
+  border: 2px dotted $color-border;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  background-color: white;
+
+  .uploadContent {
+    text-align: center;
+    font-weight: bold;
+
+    svg {
+      font-size: 48px;
+      color: $color-blue;
+    }
+  }
+
+  .cancelButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+  }
+
+  .description {
+    margin: 1rem 0;
+  }
+}

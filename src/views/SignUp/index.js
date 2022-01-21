@@ -34,7 +34,7 @@ const SignUp = () => {
         <div className={classes.logo}>
           <Logo />
         </div>
-        <Form name="basic" onFinish={handleSignUp} className={classes.form}>
+        <Form onFinish={handleSignUp} className={classes.form}>
           <Form.Item className={classes.formItem} name="username" rules={rules.username}>
             <Input placeholder="Username" />
           </Form.Item>

@@ -3,6 +3,7 @@ import Login from '../views/Login'
 import Profile from '../views/Profile'
 import SignUp from '../views/SignUp'
 import Timeline from '../views/Timeline'
+import PostUpload from '../views/PostUpload'
 import ProtectedRoute from './ProtectedRoute'
 
 const Router = () => (
@@ -22,6 +23,14 @@ const Router = () => (
       element={
         <ProtectedRoute redirectPath="/auth/login">
           <Profile />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path="/upload"
+      element={
+        <ProtectedRoute redirectPath="/auth/login">
+          <PostUpload />
         </ProtectedRoute>
       }
     />

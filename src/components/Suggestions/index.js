@@ -1,6 +1,7 @@
 import { Button, Skeleton } from 'antd'
 import Avatar from 'antd/lib/avatar/avatar'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import SuggestionItem from './SuggestionItem'
 import classes from './Suggestions.module.scss'
 
@@ -11,10 +12,6 @@ const userList = []
 const Suggestions = () => {
   const { user } = useSelector((state) => state.auth)
   const { profile, loading } = useSelector((state) => state.profile)
-
-  const handleUpload = () => {
-    // todo: upload the post
-  }
 
   const handleFollow = (user) => {
     // todo: follow this user
@@ -33,8 +30,8 @@ const Suggestions = () => {
             <span>Your profile</span>
           </div>
         </div>
-        <Button type="primary" onClick={handleUpload}>
-          New post
+        <Button type="primary">
+          <Link to="/upload">Upload</Link>
         </Button>
       </header>
       <div className={classes.suggestionsList}>
