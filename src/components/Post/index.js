@@ -43,6 +43,7 @@ const Post = ({ post, user }) => {
     </div>
   )
 
+  // TODO: display last comments on action below
   return (
     <Card title={cardTop} className={classes.card} cover={image}>
       <Meta className={classes.cardDescription} title={post.description} />
