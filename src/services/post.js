@@ -1,4 +1,13 @@
-import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
+import {
+  arrayRemove,
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  updateDoc
+} from 'firebase/firestore'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { nanoid } from 'nanoid'
 import { db, makeResObject, storage } from '../lib/firebase'
@@ -45,6 +54,12 @@ const postService = {
     })
 
     return Promise.all(posts)
+  },
+  async likePost({ userId, postId, isLiked }) {
+    await updateDoc(this.postDoc(postId), {
+      likes: isLiked ? arrayUnion(userId) : arrayRemove(userId)
+    })
+    return this.getPost(postId)
   }
 }
 

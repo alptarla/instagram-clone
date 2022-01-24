@@ -1,4 +1,12 @@
-import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
+import {
+  arrayRemove,
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  updateDoc
+} from 'firebase/firestore'
 import { db, makeResObject } from '../lib/firebase'
 
 const profileService = {
@@ -15,6 +23,13 @@ const profileService = {
     const suggestions = profiles.filter((profile) => !profile.following.includes(userId))
 
     return suggestions
+  },
+  async bookmarkPost({ userId, postId, isBookmarked }) {
+    await updateDoc(doc(db, 'profiles', userId), {
+      bookmarks: isBookmarked ? arrayUnion(postId) : arrayRemove(postId)
+    })
+
+    return this.getProfileById(userId)
   }
 }
 

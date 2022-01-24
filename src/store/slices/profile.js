@@ -4,6 +4,11 @@ import profileService from '../../services/profile'
 export const getProfileById = createAsyncThunk('profile/getProfileById', ({ id }) =>
   profileService.getProfileById(id)
 )
+export const bookmarkPost = createAsyncThunk(
+  'post/bookmarkPost',
+  ({ userId, postId, isBookmarked }) =>
+    profileService.bookmarkPost({ userId, postId, isBookmarked })
+)
 
 const profile = createSlice({
   name: 'profile',
@@ -19,6 +24,9 @@ const profile = createSlice({
     },
     [getProfileById.pending](state) {
       state.loading = true
+    },
+    [bookmarkPost.fulfilled](state, { payload }) {
+      state.profile = payload
     }
   }
 })

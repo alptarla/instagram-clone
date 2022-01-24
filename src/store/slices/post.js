@@ -5,6 +5,9 @@ export const createPost = createAsyncThunk('post/createPost', ({ userId, descrip
   postService.createPost({ userId, description, file })
 )
 export const getPosts = createAsyncThunk('post/getPosts', () => postService.getPosts())
+export const likePost = createAsyncThunk('post/likePost', ({ userId, postId, isLiked }) =>
+  postService.likePost({ userId, postId, isLiked })
+)
 
 const post = createSlice({
   name: 'post',
@@ -22,6 +25,9 @@ const post = createSlice({
     },
     [getPosts.pending](state) {
       state.loading = true
+    },
+    [likePost.fulfilled](state, { payload }) {
+      state.posts = state.posts.map((post) => (post.id === payload.id ? payload : post))
     }
   }
 })
