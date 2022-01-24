@@ -8,6 +8,9 @@ export const getPosts = createAsyncThunk('post/getPosts', () => postService.getP
 export const likePost = createAsyncThunk('post/likePost', ({ userId, postId, isLiked }) =>
   postService.likePost({ userId, postId, isLiked })
 )
+export const createComment = createAsyncThunk('post/createComment', ({ comment }) =>
+  postService.createComment(comment)
+)
 
 const post = createSlice({
   name: 'post',
@@ -27,6 +30,9 @@ const post = createSlice({
       state.loading = true
     },
     [likePost.fulfilled](state, { payload }) {
+      state.posts = state.posts.map((post) => (post.id === payload.id ? payload : post))
+    },
+    [createComment.fulfilled](state, { payload }) {
       state.posts = state.posts.map((post) => (post.id === payload.id ? payload : post))
     }
   }

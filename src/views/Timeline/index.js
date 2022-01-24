@@ -8,13 +8,17 @@ import { getPosts } from '../../store/slices/post'
 
 const Timeline = () => {
   const { posts = [], loading } = useSelector((state) => state.post)
+  const { profile } = useSelector((state) => state.profile)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getPosts())
   }, [dispatch])
 
-  const postItems = posts.map((post, index) => <Post key={index} post={post} loading={loading} />)
+  const postItems = posts.map((post, index) => (
+    <Post key={index} post={post} loading={loading} user={profile} />
+  ))
 
   return (
     <Row>

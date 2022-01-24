@@ -60,6 +60,10 @@ const postService = {
       likes: isLiked ? arrayUnion(userId) : arrayRemove(userId)
     })
     return this.getPost(postId)
+  },
+  async createComment(comment) {
+    await updateDoc(this.postDoc(comment.postId), { comments: arrayUnion(comment) })
+    return this.getPost(comment.postId)
   }
 }
 

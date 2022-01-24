@@ -1,13 +1,39 @@
-import { Card } from 'antd'
+import { Card, message } from 'antd'
 import Avatar from 'antd/lib/avatar/avatar'
 import Meta from 'antd/lib/card/Meta'
+import { nanoid } from 'nanoid'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { createComment } from '../../store/slices/post'
 import classes from './Post.module.scss'
 import PostAction from './PostAction'
 import PostModal from './PostModal'
 
-const Post = ({ post }) => {
+const Post = ({ post, user }) => {
+  const [loading, setLoading] = useState(false)
   const [showModal, setShowModal] = useState(false)
+
+  const dispatch = useDispatch()
+
+  const handleComment = async (comment) => {
+    const data = {
+      id: nanoid(),
+      text: comment,
+      user: user,
+      postId: post.id
+    }
+
+    try {
+      setLoading(true)
+      await dispatch(createComment({ comment: data })).unwrap()
+    } catch (error) {
+      message.error('Something went wrong!')
+      console.log('error :>> ', error)
+    } finally {
+      setShowModal(false)
+      setLoading(false)
+    }
+  }
 
   const image = <img src={post.file} alt={post.description} />
   const cardTop = (
@@ -23,9 +49,10 @@ const Post = ({ post }) => {
       <PostAction post={post} openPostModal={() => setShowModal(true)} />
       <PostModal
         visible={showModal}
-        onOk={() => setShowModal(false)}
         onCancel={() => setShowModal(false)}
         post={post}
+        onComment={handleComment}
+        loading={loading}
       />
     </Card>
   )

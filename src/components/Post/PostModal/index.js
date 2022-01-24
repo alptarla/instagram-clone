@@ -5,7 +5,7 @@ import Comment from '../Comment'
 import CommentInput from '../Comment/CommentInput/CommentInput'
 import classes from './PostModal.module.scss'
 
-const PostModal = ({ visible, onCancel, post, onComment }) => {
+const PostModal = ({ visible, onCancel, post, onComment, loading }) => {
   const modalTop = (
     <div className={classes.modalTop}>
       <Avatar src={post.user.img} />
@@ -34,7 +34,7 @@ const PostModal = ({ visible, onCancel, post, onComment }) => {
         <Col span={12}>
           <div className={classes.commentView}>
             <div className={classes.commentList}>{commentItems}</div>
-            <CommentInput onComment={onComment} />
+            <CommentInput onComment={onComment} loading={loading} />
           </div>
         </Col>
       </Row>
