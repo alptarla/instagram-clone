@@ -12,12 +12,16 @@ export const bookmarkPost = createAsyncThunk(
 export const getProfiles = createAsyncThunk('profile/getProfiles', () =>
   profileService.getProfiles()
 )
+export const getBookmarkedPosts = createAsyncThunk('profile/getBookmarkedPosts', ({ id }) =>
+  profileService.getBookmarkedPosts(id)
+)
 
 const profile = createSlice({
   name: 'profile',
   initialState: {
     profile: null,
     loading: false,
+    saved: [],
     suggestions: []
   },
   extraReducers: {
@@ -37,6 +41,9 @@ const profile = createSlice({
     },
     [getProfiles.pending](state) {
       state.loading = true
+    },
+    [getBookmarkedPosts.fulfilled](state, { payload }) {
+      state.saved = payload
     }
   }
 })

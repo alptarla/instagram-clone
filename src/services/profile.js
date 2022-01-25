@@ -8,6 +8,7 @@ import {
   updateDoc
 } from 'firebase/firestore'
 import { db, makeResObject } from '../lib/firebase'
+import postService from './post'
 
 const profileService = {
   async getProfileById(id) {
@@ -30,6 +31,11 @@ const profileService = {
     })
 
     return this.getProfileById(userId)
+  },
+  async getBookmarkedPosts(id) {
+    const post = await this.getProfileById(id)
+    const bookmarks = post.bookmarks.map((bookmarkId) => postService.getPost(bookmarkId))
+    return Promise.all(bookmarks)
   }
 }
 

@@ -38,4 +38,7 @@ const post = createSlice({
   }
 })
 
+export const selectUserPosts = (userId) => (state) =>
+  state.post.posts.filter((post) => post.user.id === userId)
+
 export default post.reducer

@@ -11,7 +11,7 @@ const SuggestionItem = ({ user, onFollow }) => (
         <span>Suggested for you</span>
       </div>
     </div>
-    <Button type="text" onClick={() => onFollow(user)}>
+    <Button type="text" disabled onClick={() => onFollow(user)}>
       Follow
     </Button>
   </div>
