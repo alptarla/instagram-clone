@@ -16,7 +16,7 @@ const profileService = {
   },
   async getProfiles() {
     const res = await getDocs(collection(db, 'profiles'))
-    return res.docs((doc) => makeResObject(doc))
+    return res.docs.map((doc) => makeResObject(doc))
   },
   async getSuggestionProfiles(userId) {
     const profiles = await this.getProfiles()

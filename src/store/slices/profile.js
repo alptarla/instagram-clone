@@ -9,6 +9,9 @@ export const bookmarkPost = createAsyncThunk(
   ({ userId, postId, isBookmarked }) =>
     profileService.bookmarkPost({ userId, postId, isBookmarked })
 )
+export const getProfiles = createAsyncThunk('profile/getProfiles', () =>
+  profileService.getProfiles()
+)
 
 const profile = createSlice({
   name: 'profile',
@@ -27,6 +30,13 @@ const profile = createSlice({
     },
     [bookmarkPost.fulfilled](state, { payload }) {
       state.profile = payload
+    },
+    [getProfiles.fulfilled](state, { payload }) {
+      state.suggestions = payload
+      state.loading = false
+    },
+    [getProfiles.pending](state) {
+      state.loading = true
     }
   }
 })
