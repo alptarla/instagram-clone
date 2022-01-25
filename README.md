@@ -14,13 +14,13 @@
 
 ## Features
 
-- [X]Authentication
-- [X]See their posts of the following users.
-- [X]Like, bookmark and comment it.
+- [x] Authentication
+- [x] See their posts of the following users.
+- [x] Like, bookmark and comment it.
 - [x] Publish own posts with a description.
 - [ ] See other users profile and follow it.
 - [ ] Search profiles.
-- [X]See own profile includes posts and bookmarks
+- [x] See own profile includes posts and bookmarks
 
 ## Techs
 
