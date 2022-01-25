@@ -1,16 +1,16 @@
 # React Instagram Clone
 
+## Screenshot
+
+![app-screenshot](./app-screenshot.png)
+
 ## Views
 
-- Auth
+- Login
+- SignUp
 - Profile
 - Timeline
-
-## Models
-
-- User
-- Post
-- Comment
+- Upload
 
 ## Features
 
@@ -18,8 +18,8 @@
 - See their posts of the following users.
 - Like, bookmark and comment it.
 - Publish own posts with a description.
-- See other users profile and follow it.
-- Search profiles.
+- [x] See other users profile and follow it.
+- [x] Search profiles.
 - See own profile includes posts and bookmarks
 
 ## Techs
