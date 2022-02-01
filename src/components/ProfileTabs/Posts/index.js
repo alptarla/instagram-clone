@@ -1,5 +1,5 @@
-const Posts = () => {
-  return <div>Posts</div>
+function Posts() {
+  return <div>Posts</div>;
 }
 
-export default Posts
+export default Posts;

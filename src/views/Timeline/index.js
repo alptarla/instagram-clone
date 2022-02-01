@@ -1,24 +1,29 @@
-import { Col, Row } from 'antd'
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import Post from '../../components/Post'
-import PostsLoader from '../../components/shared/PostsLoader'
-import Suggestions from '../../components/Suggestions'
-import { getPosts } from '../../store/slices/post'
+import { Col, Row } from 'antd';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Post from '../../components/Post';
+import PostsLoader from '../../components/shared/PostsLoader';
+import Suggestions from '../../components/Suggestions';
+import { getPosts } from '../../store/slices/post';
 
-const Timeline = () => {
-  const { posts = [], loading } = useSelector((state) => state.post)
-  const { profile } = useSelector((state) => state.profile)
+function Timeline() {
+  const { posts = [], loading } = useSelector((state) => state.post);
+  const { profile } = useSelector((state) => state.profile);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPosts())
-  }, [dispatch])
+    dispatch(getPosts());
+  }, [dispatch]);
 
   const postItems = posts.map((post, index) => (
-    <Post key={index} post={post} loading={loading} user={profile} />
-  ))
+    <Post
+      key={index}
+      post={post}
+      loading={loading}
+      user={profile}
+    />
+  ));
 
   return (
     <Row>
@@ -30,7 +35,7 @@ const Timeline = () => {
         <Suggestions />
       </Col>
     </Row>
-  )
+  );
 }
 
-export default Timeline
+export default Timeline;

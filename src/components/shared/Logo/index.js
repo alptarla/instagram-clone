@@ -1,9 +1,14 @@
-import classes from './Logo.module.scss'
+import classes from './Logo.module.scss';
 
-const Logo = () => (
-  <div className={classes.logo}>
-    <img src="/logo.svg" alt="instagram" />
-  </div>
-)
+function Logo() {
+  return (
+    <div className={classes.logo}>
+      <img
+        src="/logo.svg"
+        alt="instagram"
+      />
+    </div>
+  );
+}
 
-export default Logo
+export default Logo;
