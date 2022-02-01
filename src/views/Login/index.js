@@ -1,4 +1,6 @@
-import { Button, Card, Form, Input } from 'antd'
+import {
+  Button, Card, Form, Input,
+} from 'antd'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
@@ -8,7 +10,7 @@ import rules from '../../lib/formRules'
 import { login } from '../../store/slices/auth'
 import classes from '../../styles/Form.module.scss'
 
-const Login = () => {
+function Login() {
   const [loading, setLoading] = useState(false)
 
   const { user } = useSelector((state) => state.auth)
@@ -20,7 +22,7 @@ const Login = () => {
       setLoading(true)
       await dispatch(login({ email, password })).unwrap()
       navigate('/')
-    } catch {
+    } catch (error) {
       toast.error('Authentication denied!')
     } finally {
       setLoading(false)
@@ -34,22 +36,37 @@ const Login = () => {
         <div className={classes.logo}>
           <Logo />
         </div>
-        <Form onFinish={handleLogin} className={classes.form}>
-          <Form.Item className={classes.formItem} name="email" rules={rules.email}>
+        <Form
+          onFinish={handleLogin}
+          className={classes.form}
+        >
+          <Form.Item
+            className={classes.formItem}
+            name="email"
+            rules={rules.email}
+          >
             <Input placeholder="Phone number, username, or email" />
           </Form.Item>
-          <Form.Item className={classes.formItem} name="password" rules={rules.password}>
+          <Form.Item
+            className={classes.formItem}
+            name="password"
+            rules={rules.password}
+          >
             <Input.Password placeholder="Password" />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" loading={loading}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              loading={loading}
+            >
               Submit
             </Button>
           </Form.Item>
         </Form>
       </Card>
       <Card className={classes.sectionBottom}>
-        <span>Don't have an account? </span>
+        <span>{"Don't have an account? "}</span>
         <Link to="/auth/sign-up">Sign up</Link>
       </Card>
     </div>

@@ -5,6 +5,7 @@
     "react/react-in-jsx-scope": "off",
     "react/jsx-max-props-per-line": [1, {"maximum":{ "single": 1, "multi": 1 }}],
     "react/no-array-index-key": "off",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "semi": "off"
   }
 }
