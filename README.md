@@ -29,4 +29,3 @@
 - Ant
 - Scss
 - Firebase
-- Dropzone
